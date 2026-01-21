@@ -7,7 +7,7 @@ class TinyTransformer(nn.Module):
     def __init__(self, vocab, d=128, nhead=4):
         super().__init__()
         self.emb = nn.Embedding(vocab, d)
-        self.pos = nn.Embedding(2048, d)
+        self.pos = nn.Embedding(2**15, d)
         enc = nn.TransformerEncoderLayer(d, nhead)
         self.tr = nn.TransformerEncoder(enc, 2)
         self.out = nn.Linear(d, vocab)

@@ -3,9 +3,10 @@ import torch
 import pretty_midi
 from model import TinyTransformer
 
-model = TinyTransformer(128)
-model.load_state_dict(torch.load("model.pt"))
-model.eval()
+
+model = TinyTransformer(128)  # same initialization as before
+model.load_state_dict(torch.load("tiny_transformer.pth"))
+model.eval()  # set to eval mode if generating
 
 seq = torch.randint(0, 128, (1, 1))
 for _ in range(300):
